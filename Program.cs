@@ -4,104 +4,120 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArrayProgramsAssignment
+namespace PatternProgram
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            //1-------------- > Reverse a Number
 
-            int num, reverse = 0, remainder;
-            Console.Write("Enter the number : ");
+            //1------------------>Pyramid Star Pattern
+            int rows = 5;
 
-            num = Convert.ToInt32(Console.ReadLine());
-
-            while (num != 0)
+            for (int i = 1; i <= rows; i++)
             {
-                remainder = num % 10;
-                reverse = reverse * 10 + remainder;
-                num = num / 10;
-            }
-
-            Console.WriteLine("Reverse the number is:" + reverse);
-
-            //2------------>Find Largest Among Three Numbers
-
-            int a, b, c;
-
-            Console.Write("Enter first number: ");
-            a = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Enter second number: ");
-            b = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Enter third number: ");
-            c = Convert.ToInt32(Console.ReadLine());
-
-            if (a > b && a > c)
-            {
-                Console.WriteLine("Largest number is: " + a);
-            }
-            else if (b > a && b > c)
-            {
-                Console.WriteLine("Largest number is: " + b);
-            }
-            else
-            {
-                Console.WriteLine("Largest number is: " + c);
-            }
-
-            //3----------->Print Multiplication Table
-
-            int number;
-
-            Console.Write("Enter the number :");
-
-            number = Convert.ToInt32(Console.ReadLine());
-
-            for (int i = 1; i <= 10; i++)
-            {
-                Console.WriteLine(number + "x" + i + "=" + (number * i));
-            }
-
-           // 4-------------- > Function for Sum of Two Numbers
-
-            int result;
-
-            result = Sum(10, 20);
-
-            Console.WriteLine("Sum is: " + result);
-
-            //5-------------------->Function to Count Spaces in String
-
-            Console.Write("Enter a sentence: ");
-            string input = Console.ReadLine();
-
-            CountSpaces(input);
-
-        }
-
-        //4
-        static int Sum(int a, int b)
-        {
-            return a + b;
-        }
-
-        //5
-        static void CountSpaces(string text)
-        {
-            int count = 0;
-
-            foreach (char c in text)
-            {
-                if (c == ' ')
+                for (int j = 1; j <= rows - i; j++)
                 {
-                    count++;
+                    Console.Write(" ");
+                }
+
+                for (int k = 1; k <= 2 * i - 1; k++)
+                {
+                    Console.Write("*");
+                }
+
+                Console.WriteLine();
+            }
+
+            //2------------------------>Swap Two Numbers Without Third Variable
+            int a = 10;
+            int b = 20;
+
+            a = a + b;
+            b = a - b;
+            a = a - b;
+
+            Console.WriteLine("a = " + a);
+            Console.WriteLine("b = " + b);
+
+            //3------------------------->Find Niven Numbers in Array
+
+            int[] arr = { 13, 433, 49, 420, 4991 };
+
+            foreach (int num in arr)
+            {
+                int sum = 0;
+                int temp = num;
+
+                while (temp > 0)
+                {
+                    sum = sum + temp % 10;
+                    temp = temp / 10;
+                }
+
+                if (num % sum == 0)
+                {
+                    Console.WriteLine(num);
                 }
             }
 
-            Console.WriteLine("Number of spaces: " + count);
+            //4----------->Find Min and Max in Array
+            int[] arr1 = { 5, 2, 8, 1, 9 };
+
+            int min = arr1[0];
+            int max = arr1[0];
+
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                if (arr1[i] < min)
+                    min = arr1[i];
+
+                if (arr1[i] > max)
+                    max = arr1[i];
+            }
+
+            Console.WriteLine("Minimum = " + min);
+            Console.WriteLine("Maximum = " + max);
+
+            //5--------------------->Count Duplicate Elements in Array
+            int[] ar = { 5, 1, 1 };
+            int count = 0;
+
+            for (int i = 0; i < ar.Length; i++)
+            {
+                for (int j = i + 1; j < ar.Length; j++)
+                {
+                    if (ar[i] == ar[j])
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            Console.WriteLine("Duplicate count = " + count);
+
+            //6-------------------->Merge Two Arrays and Sort
+            int[] ar1 = { 1, 2, 3 };
+            int[] arr2 = { 1, 2, 3 };
+
+            int[] merged = new int[ar1.Length + arr2.Length];
+
+            ar1.CopyTo(merged, 0);
+            arr2.CopyTo(merged, ar1.Length);
+
+            Array.Sort(merged);
+
+            foreach (int num in merged)
+            {
+                Console.Write(num + " ");
+            }
+
         }
+
     }
-}
+
+    }
+
+
+
+
